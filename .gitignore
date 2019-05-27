@@ -1,0 +1,4 @@
+.env
+cards/
+node_modules/
+.idea/
