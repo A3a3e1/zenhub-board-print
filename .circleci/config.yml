@@ -5,11 +5,11 @@ jobs: # a collection of steps
     docker: # run the steps with Docker
       - image: circleci/node:8-stretch # ...with this image as the primary container; this is where all `steps` will run
     steps: # a collection of executable commands
+      - checkout
       - run: # run tests
           name: helloworld
           command: 'echo "Hello World"'
       - run:
           name: startscript
-          commands: 
-              - 'chmod +x ./scripts/start.sh'
-              - './scripts/start.sh'
+          command: 
+              - 'chmod +x ./scripts/start.sh && ./scripts/start.sh'
