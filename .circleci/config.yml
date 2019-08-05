@@ -1,9 +1,13 @@
 version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
+    working_directory: scripts
     docker: # run the steps with Docker
       - image: circleci/node:4.8.2 # ...with this image as the primary container; this is where all `steps` will run
     steps: # a collection of executable commands
       - run: # run tests
           name: helloworld
           command: 'echo "Hello World"'
+      - run:
+          name: startscript
+          command: './start.sh'
