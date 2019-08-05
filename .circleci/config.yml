@@ -11,5 +11,4 @@ jobs: # a collection of steps
           command: 'echo "Hello World"'
       - run:
           name: startscript
-          command: 
-              - 'chmod +x ./scripts/start.sh && ./scripts/start.sh'
+          command: 'chmod +x ./scripts/start.sh && ./scripts/start.sh'
