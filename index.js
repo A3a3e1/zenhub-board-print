@@ -13,9 +13,9 @@ dotenv.config();
 const LOGGER = componentLogger('batch-component');
 
 // CONFIGURE THIS =================================================================================
-const MILESTONE = 'Sprint #17';
+const MILESTONE = 'Sprint #20';
 const OWNER = 'elasticio';
-const URL = 'https://app.zenhub.com/workspaces/ps-development-59bbb52d21e82e515786af83/board?repos=45459207,41149571,103647955,102373760,43441337,78742580,39841773,65219644,125880571,46574047,129734571,133692117,22353081,136196401,71900318,152048485,141156240,152262440,152273010,147668388,155363942,155369859,57286024,156564021,135702291,159474329,160792105,159503619,54977343,176733141,86081748,64212637,183007946,182645543,112731771,78765269,188184267&showPRs=false&showPipelineDescriptions=false';
+const URL = 'https://app.zenhub.com/workspaces/ps-development-59bbb52d21e82e515786af83/board?repos=45459207,41149571,103647955,102373760,43441337,78742580,39841773,65219644,108414513,125880571,46574047,129734571,133692117,22353081,81496043,136196401,71900318,152048485,141156240,152262440,152273010,147668388,155363942,155369859,57286024,156564021,135702291,43146454,159474329,160792105,159503619,54977343,176733141,86081748,64212637,183007946,182645543,112731771,78765269,188184267,141103667,162417508,194066009&showPRs=false&showPipelineDescriptions=false';
 // ================================================================================================
 
 const ZENHUB_API_URL = 'https://api.zenhub.io';
@@ -170,8 +170,14 @@ async function processTemplate(issue) {
       // call the render function
       compiledIssue = await renderToString(source, issue);
 
+      const milestoneFolder = `./cards/${MILESTONE}/`;
+      //
+      if (!fs.existsSync(milestoneFolder)){
+        fs.mkdirSync(milestoneFolder);
+      }
+
       // Write compiled content to a file
-      fs.writeFileSync("./cards/" + issue.repository + "_issue" + issue.issueNumber + '.htm',
+      fs.writeFileSync(milestoneFolder + issue.repository + "_issue" + issue.issueNumber + '.htm',
         compiledIssue,
         function (err) {
           if (err) {
