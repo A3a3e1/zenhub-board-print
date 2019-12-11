@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@elastic.io/component-logger": "0.0.1",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "bunyan": "^1.8.12",
     "bunyan-debug-stream": "^2.0.0",
     "chai": "^4.2.0",
